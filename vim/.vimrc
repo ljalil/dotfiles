@@ -60,6 +60,9 @@ Plug 'junegunn/fzf.vim'
 "------------------=== Colorschemes ===------------------
 Plug 'flazz/vim-colorschemes'
 
+"------------------=== Writing ===------------------
+Plug 'junegunn/limelight.vim'
+
 call plug#end()
 
 "==========================================
