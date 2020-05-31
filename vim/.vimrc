@@ -28,6 +28,7 @@ let NERDTreeIgnore = ['\.acn$[[file]]','\.acr$[[file]]','\.alg$[[file]]','\.aux$
 call plug#begin('~/.vim/plugged')
 "------------------=== Code/Project Navigation ===------------------
 Plug 'preservim/nerdtree'
+Plug 'majutsushi/tagbar' "requires exuberant-ctags package to be installed
 Plug 'sheerun/vim-polyglot'
 "------------------=== Powerline  ===------------------
 "install via: pip3 install powerline-status
@@ -40,7 +41,10 @@ set laststatus=2
 Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'zathura'
-
+let g:vimtex_toc_config = {
+			\'split_pos'   : ':vert :botright',
+			\'split_width':  35,
+			\}
 "------------------=== Snippets ===------------------
 Plug 'sirver/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
@@ -50,7 +54,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 Plug 'jpalardy/vim-slime'
 Plug 'hanschen/vim-ipython-cell'
 "Plug 'jupyter-vim/jupyter-vim'
-let g:slime_target = "tmux"
+let g:slime_target = "x11"
 let g:slime_paste_file = "$HOME/.slime_paste"
 
 "------------------=== fzf  ===------------------
@@ -71,4 +75,7 @@ call plug#end()
 let mapleader = " "
 nnoremap <leader>l :wall<cr>:VimtexCompile<cr>
 nnoremap <leader>t :NERDTreeToggle<cr>
+nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>c :IPythonCellExecuteCell<CR>
+
+let maplocalleader = "/"
