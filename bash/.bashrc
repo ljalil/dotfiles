@@ -143,3 +143,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Aliases
+alias cdwo='cd $HOME/Workspace'
+alias cdth='cd $HOME/Workspace/MasterThesis'
+alias cddo='cd $HOME/.dotfiles'

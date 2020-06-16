@@ -12,10 +12,17 @@
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 set number
-colo base16-nord
-set hlsearch
-set incsearch
+colorscheme nord
+set hlsearch	"Highlight search
+set incsearch	"Highlight partial search
+set linebreak	"Don't break words when line are too long
+
 set wildignore=*.acn,*.acr,*.alg,*.aux,*.bbl,*.blg,*.glg,*.glo,*.lot,*.out,*.synctex.gz,*.toc
+set encoding=UTF-8
+
+au BufRead,BufNewFile *.todo set filetype=todo
+
+let g:vimtex_fold_enabled = 1
 "IPython cells highlight
 
 "let NERDTreeIgnore = ['\.acn$','\.acr$','\.alg$','\.aux$','\.bbl$','\.blg$','\.glg$', '\.glo$', '\.lot$', '\.out$', '\.synctex\.gz$', '\.toc$']
@@ -32,19 +39,51 @@ Plug 'majutsushi/tagbar' "requires exuberant-ctags package to be installed
 Plug 'sheerun/vim-polyglot'
 "------------------=== Powerline  ===------------------
 "install via: pip3 install powerline-status
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2
+"python3 from powerline.vim import setup as powerline_setup
+"python3 powerline_setup()
+"python3 del powerline_setup
+"set laststatus=2
 
+"------------------=== Lightline  ===------------------
+"Plug 'itchyny/lightline.vim'
+"set laststatus=2
+"set noshowmode
+
+"------------------=== Airline  ===------------------
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+set laststatus=2
+set noshowmode
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_theme='nord'
 "------------------=== Languages Support ===------------------
 Plug 'lervag/vimtex'
+Plug   'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_toc_config = {
 			\'split_pos'   : ':vert :botright',
 			\'split_width':  35,
+			\'layers' : ['content'],
+			\'fold_enable' : 1,
+			\'show_help' : 0,
 			\}
+let g:vimtex_fold_types = {
+			\'comments' : {'enabled' : 1},
+			\'envs' : {
+			\'blacklist' : [],
+			\'whitelist' : ['figure', 'table'],
+			\},
+			\}
+set conceallevel=2
+let g:tex_conceal="abdgm"
+let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+set encoding=utf-8
 "------------------=== Snippets ===------------------
 Plug 'sirver/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
@@ -61,11 +100,14 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-"------------------=== Colorschemes ===------------------
+"------------------=== Appearance ===------------------
+Plug 'arcticicestudio/nord-vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'ryanoasis/vim-devicons'
 
 "------------------=== Writing ===------------------
 Plug 'junegunn/limelight.vim'
+let g:limelight_conceal_ctermfg = 8 "DarkGray
 
 call plug#end()
 
@@ -73,9 +115,10 @@ call plug#end()
 " Key mapping
 "==========================================
 let mapleader = " "
-nnoremap <leader>l :wall<cr>:VimtexCompile<cr>
+let maplocalleader = ","
+
 nnoremap <leader>t :NERDTreeToggle<cr>
 nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>c :IPythonCellExecuteCell<CR>
 
-let maplocalleader = "/"
+filetype plugin on
