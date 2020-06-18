@@ -1,0 +1,22 @@
+#Libraries
+snippet importscipy "Import SciPy libraries" b
+from numpy import *
+import pandas as pd
+import matplotlib.pyplot as plt
+$0
+endsnippet
+
+#Matplotlib
+snippet pltlatex "LaTeX rendering for matplotlib figures" b
+plt.rc('font', family='serif')
+plt.rc('xtick', labelsize='10')
+plt.rc('ytick', labelsize='10')
+plt.rc('axes', titlesize=12)
+plt.rc('text', usetex=True)
+$0
+endsnippet
+
+snippet figure "Matplotlib figure" b
+fig, axes = plt.subplots(${1:nrows}, ${2:ncols}, sharex=${3:False}, sharey=${4:False} ,figsize=(${5:width}, ${6:length}))
+$0
+endsnippet
