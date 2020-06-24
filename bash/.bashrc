@@ -147,3 +147,4 @@ unset __conda_setup
 alias cdwo='cd $HOME/Workspace'
 alias cdth='cd $HOME/Workspace/MasterThesis'
 alias cddo='cd $HOME/.dotfiles'
+alias cleanlatex='rm *.acr *.aux *.blg *.fls *.glo *.ist *.log *.out *.synctex.gz *.toc *.acn *.alg *.bbl *.fdb_latexmk *.glg *.gls *.lof *.lot'
