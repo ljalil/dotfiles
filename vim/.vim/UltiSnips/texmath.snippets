@@ -1,5 +1,5 @@
 priority -50
-
+extends global
 ##############
 # MATH STUFF #
 ##############
@@ -10,6 +10,10 @@ endsnippet
 
 snippet frac "Fraction" w
 \frac{$1}{$2} $0
+endsnippet
+
+snippet partdev "Partial derivative" w
+\frac{\partial $1}{\partial $2} $0
 endsnippet
 
 snippet eqn "Equation" b
@@ -48,6 +52,18 @@ snippet eqann "Equation array without a number" b
 \end{eqnarray*}
 endsnippet
 
+snippet funcdef "Function definition" w
+f: \mathbb{${1:R}}^{$2} \rightarrow \mathbb{${3:R}}^{$4} $0
+endsnippet
+
+snippet sum "Summation" w
+\sum_{$1}^{$2} $0
+endsnippet
+
+snippet lim "Limit" w
+\lim_{$1\rightarrow ${2:\infty}} $0
+endsnippet
+
 #################
 # PHYSICS STUFF #
 #################
@@ -65,3 +81,4 @@ snippet SI "SI-Unit" w
 endsnippet
 
 # vim:ft=snippets:
+
