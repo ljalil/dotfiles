@@ -1,3 +1,6 @@
+set synctex true
+set synctex-editor-command "vim --servername tex --remote-silent +%{line} %{input}"
+
 set notification-error-bg       "#282828" # bg
 set notification-error-fg       "#fb4934" # bright:red
 set notification-warning-bg     "#282828" # bg

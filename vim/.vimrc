@@ -1,7 +1,7 @@
 " Abdeljalil Letrache
 " abdeljalilletrache@outlook.com
 " github.com/ljalil
-"
+
 " *************************************** "
 "	       _                   	  "
 "	__   _(_)_ __ ___  _ __ ___ 	  "
@@ -11,7 +11,9 @@
 "	                            	  "
 " *************************************** "
 
-"==================== Vimplug ====================
+"┌─────────┐
+"│ Vimplug │
+"└─────────┘
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar' "requires exuberant-ctags package to be installed
@@ -29,9 +31,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/limelight.vim'
 call plug#end()
 
-"==================== General settings ====================
+"┌──────────────────┐
+"│ General settings │
+"└──────────────────┘
 set encoding=utf-8
-set number relativenumber
+set relativenumber
+inoremap jj <esc>
+set hidden
 filetype plugin on
 let mapleader = " "
 let maplocalleader = ","
@@ -42,8 +48,14 @@ set linebreak			"Don't break words when line are too long
 set wildignore=*.acn,*.acr,*.alg,*.aux,*.bbl,*.blg,*.glg,*.glo,*.lot,*.out,*.synctex.gz,*.toc
 colo gruvbox
 set background=dark
+hi VertSplit ctermbg=236
+set fillchars+=vert:\ 
+hi NonText ctermfg=bg
+au BufRead,BufNewFile *.todo set filetype=todo
 
-"==================== Airline ====================
+"┌─────────┐
+"│ Airline │
+"└─────────┘
 set laststatus=2
 set noshowmode			"Don't show mode, it's already in airline
 let g:airline_powerline_fonts = 1
@@ -53,9 +65,10 @@ let g:airline_left_alt_sep = ''		"  |
 let g:airline_right_alt_sep = ''	" -|
 let g:airline#extensions#whitespace#enabled = 0 "Don't show white spaces info
 
-"==================== NERDTree ==================== 
+"┌──────────┐
+"│ NERDTree │
+"└──────────┘
 nnoremap <leader>t :NERDTreeToggle<cr>
-let NERDTreeIgnore = ['\.acn$[[file]]','\.acr$[[file]]','\.alg$[[file]]','\.aux$[[file]]','\.bbl$[[file]]','\.blg$[[file]]','\.glg$[[file]]', '\.glo$[[file]]', '\.lot$[[file]]', '\.out$[[file]]', '\.synctex\.gz$[[file]]', '\.toc$[[file]]','\.fls$[[file]]','\.gls$[[file]]','\.ist$[[file]]','\.lof$[[file]]','\.log$[[file]]','\.fdb_latexmk$[[file]]','\.synctex(busy)$[[file]]']
 highlight! link NERDTreeFlags NERDTreeDir "Apply highliting to folders icons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
@@ -63,14 +76,19 @@ let g:DevIconsEnableFolderExtensionPatternMatching = 1
 "let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let NERDTreeDirArrowExpandable=""
 let NERDTreeDirArrowCollapsible=""
+let g:NERDTreeMinimalUI = v:true
 
-"==================== UltiSnips ==================== 
+"┌───────────┐
+"│ UltiSnips │
+"└───────────┘
 let g:UltiSnipsSnippetDirectories	=	[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger		=	"<Tab>"
 let g:UltiSnipsJumpForwardTrigger	=	"<Tab>"
 let g:UltiSnipsJumpBackwardTrigger	=	"<S-Tab>"
 
-"==================== Vimtex ==================== 
+"┌────────┐
+"│ Vimtex │
+"└────────┘
 let g:tex_flavor = "latex"
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_toc_config = {
@@ -90,31 +108,60 @@ let g:vimtex_fold_types = {
 			\}
 set nofoldenable		"Disable folding when opening a file
 
-"==================== Tex-Conceal ==================== 
+"┌─────────────┐
+"│ Tex-Conceal │
+"└─────────────┘
 set conceallevel=2
 let g:tex_conceal="abdgm"
 let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
 let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
-"==================== Vim Slime ==================== 
+"┌───────────┐
+"│ Vim Slime │
+"└───────────┘
 let g:slime_target = "x11"
 let g:slime_paste_file = "$HOME/.slime_paste"
 
-"==================== IPython Cell ==================== 
+"┌──────────────┐
+"│ IPython Cell │
+"└──────────────┘
 nnoremap <leader>c :IPythonCellExecuteCell<CR>
 
-"==================== Tagbar ==================== 
+"┌────────┐
+"│ Tagbar │
+"└────────┘
 nnoremap <leader>b :TagbarToggle<cr>
 
-"==================== Limelight ==================== 
+"┌───────────┐
+"│ Limelight │
+"└───────────┘
 let g:limelight_conceal_ctermfg = 8 "DarkGray
 
-"==================== TODO Files ==================== 
-au BufRead,BufNewFile *.todo set filetype=todo
-
-"==================== Powerline ==================== 
+"┌───────────┐
+"│ Powerline │
+"└───────────┘
 "install via: pip3 install powerline-status
 "python3 from powerline.vim import setup as powerline_setup
 "python3 powerline_setup()
 "python3 del powerline_setup
 "set laststatus=2
+
+function! Replace()
+python3 << EOF
+for line in range(len(vim.current.buffer)):
+	vim.current.buffer[line] = vim.current.buffer[line].replace('[ ]','[x]')
+EOF
+endfunction
+
+
+function! SynctexForward()
+python3 << EOF
+import os
+(row, col) = vim.current.window.cursor
+path_input = str(vim.current.buffer.name)
+path_output = path_input.replace('.tex', '.pdf')
+command = 'zathura --synctex-forward {}:{}:{} {}'.format(row, col, path_input, path_output)
+os.system(command)
+EOF
+endfunction
+nnoremap <localleader>lf :call SynctexForward()<cr>
