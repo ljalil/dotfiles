@@ -1,3 +1,9 @@
+"if exists('g:todo_app_loaded')
+"finish
+"endif
+
+"let g:todo_app_loaded=1
+
 "syntax match todoCheckbox "\[\ \]" conceal cchar=
 "syntax match todoCheckbox "\[x\]" conceal cchar=
 "hi Conceal ctermbg=NONE
@@ -33,8 +39,8 @@ vim.current.line = vim.current.line.replace('[x]', '[ ]')
 EOF
 endfunction
 
-function! ResetCursor()
-python3 << EOF
-vim.current.window.cursor = (1,5)
-EOF
-endfunction
+"function! s:OpenTodo()
+"exe ":30vs /home/abdeljalil/test.todo"
+"endfunction
+
+"command Todo :call s:OpenTodo()

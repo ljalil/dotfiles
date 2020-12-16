@@ -90,7 +90,8 @@ let g:UltiSnipsJumpBackwardTrigger	=	"<S-Tab>"
 "│ Vimtex │
 "└────────┘
 let g:tex_flavor = "latex"
-let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = "zathura"
+let g:vimtex_view_general_viewer = 'vimtex_viewer_zathura'
 let g:vimtex_toc_config = {
 			\'split_pos'   : ':vert :botright',
 			\'split_width':  35,
@@ -125,12 +126,20 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 "┌──────────────┐
 "│ IPython Cell │
 "└──────────────┘
-nnoremap <leader>c :IPythonCellExecuteCell<CR>
+nnoremap <leader>c		:IPythonCellExecuteCell<CR>
+nnoremap <leader>cc		:IPythonCellExecuteCellJump<CR>
+nnoremap <leader><Up>		:IPythonCellPrevCell<CR>
+nnoremap <leader><Down>		:IPythonCellNextCell<CR>
 
 "┌────────┐
 "│ Tagbar │
 "└────────┘
 nnoremap <leader>b :TagbarToggle<cr>
+
+"┌─────┐
+"│ FZF │
+"└─────┘
+"let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
 
 "┌───────────┐
 "│ Limelight │
@@ -146,22 +155,14 @@ let g:limelight_conceal_ctermfg = 8 "DarkGray
 "python3 del powerline_setup
 "set laststatus=2
 
-function! Replace()
-python3 << EOF
-for line in range(len(vim.current.buffer)):
-	vim.current.buffer[line] = vim.current.buffer[line].replace('[ ]','[x]')
-EOF
-endfunction
-
-
-function! SynctexForward()
-python3 << EOF
-import os
-(row, col) = vim.current.window.cursor
-path_input = str(vim.current.buffer.name)
-path_output = path_input.replace('.tex', '.pdf')
-command = 'zathura --synctex-forward {}:{}:{} {}'.format(row, col, path_input, path_output)
-os.system(command)
-EOF
-endfunction
-nnoremap <localleader>lf :call SynctexForward()<cr>
+"function! SynctexForward()
+"python3 << EOF
+"import os
+"(row, col) = vim.current.window.cursor
+"path_input = str(vim.current.buffer.name)
+"path_output = path_input.replace('.tex', '.pdf')
+"command = 'zathura --synctex-forward {}:{}:{} {}'.format(row, col, path_input, path_output)
+"os.system(command)
+"EOF
+"endfunction
+"nnoremap <localleader>lf :call SynctexForward()<cr>
