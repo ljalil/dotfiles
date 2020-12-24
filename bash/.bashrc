@@ -120,7 +120,7 @@ if [ -f `which powerline-daemon` ]; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
   POWERLINE_BASH_SELECT=1
-  . /usr/share/powerline/bindings/bash/powerline.sh
+  . /usr/share/powerline/bash/powerline.sh
 fi
 
 if [[ $(ps --no-header -p $PPID -o comm) =~ yakuake|konsole ]]; then
@@ -130,14 +130,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/abdeljalil/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/abdeljalil/.anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/abdeljalil/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/abdeljalil/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/abdeljalil/.anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/abdeljalil/.anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/abdeljalil/anaconda3/bin:$PATH"
+        export PATH="/home/abdeljalil/.anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -145,7 +145,7 @@ unset __conda_setup
 
 # Aliases
 alias cdwo='cd $HOME/Workspace'
-alias cdth='cd $HOME/Workspace/MasterThesis'
+alias cdnotes='cd $HOME/Documents/Notes'
 alias cddo='cd $HOME/.dotfiles'
 alias cleanlatex='rm *.acr *.aux *.blg *.fls *.glo *.ist *.log *.out *.synctex.gz *.toc *.acn *.alg *.bbl *.fdb_latexmk *.glg *.gls *.lof *.lot'
 alias xclip='xclip -selection c'
