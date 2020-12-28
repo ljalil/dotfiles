@@ -1,8 +1,21 @@
 snippet texnote "New LaTeX note" b
 \documentclass[a4, 12pt]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amsfonts}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{transparent}
+
+\setlength{\parskip}{.5em}
+\setlength{\parindent}{0em}
+
+\title{$1}
+\author{Abdeljalil Letrache}
 
 \begin{document}
-	$0
+\maketitle
+
+	$2
+
 \end{document}
 endsnippet
