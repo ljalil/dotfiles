@@ -143,6 +143,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+source ~/.notes.sh
+
 # Aliases
 alias cdwo='cd $HOME/Workspace'
 alias cdnotes='cd $HOME/Documents/Notes'
