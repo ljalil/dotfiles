@@ -8,46 +8,34 @@ function notenew() {
 	echo $new_note_notebook
 	printf 'Note title: '
 	read new_note_title
-	simplified_new_note_title=${new_note_title,,} #to lowercase
-	simplified_new_note_title="${simplified_new_note_title// /_}"
-	simplified_new_note_title="${simplified_new_note_title/-/_}"
-	simplified_new_note_title="${simplified_new_note_title//\'/}"
+	simplified_new_note_title=$new_note_title #to lowercase
+#	simplified_new_note_title=${new_note_title,,} #to lowercase
+#	simplified_new_note_title="${simplified_new_note_title// /_}"
+#	simplified_new_note_title="${simplified_new_note_title/-/_}"
+#	simplified_new_note_title="${simplified_new_note_title//\'/}"
 #	touch "${new_note_notebook}/${simplified_new_note_title}.tex"
-	vim -c 'call feedkeys("itexnote\<Tab>")' -c "call feedkeys('${new_note_title}')" -c 'call feedkeys("\<Tab>")'  "${new_note_notebook}/${simplified_new_note_title}.tex" --servername tex 	
-}
-
-function notebooknew() {
-	printf "Choose new notebook parent directory: "
-	new_notebook_directory=$(find $notes_path -type d | fzf)
-	echo $new_notebook_directory
-	printf "Choose new notebook name: "
-	read new_notebook_name
-	mkdir "${new_notebook_directory}/${new_notebook_name}" -p
-	echo "Notebook ${new_notebook_name} created succesfully."
-}
-
-function notebookbrowse() {
-	notebook_directory=$(find $notes_path -type d | fzf)
-	cd "${notebook_directory}"
+	vim -c 'call feedkeys("itexnote\<Tab>")' -c "call feedkeys('${new_note_title}')" -c 'call feedkeys("\<Tab>")'  "${new_note_notebook}/${new_note_title}.tex" --servername tex 	
 }
 
 function notezip() {
 	for var in "$@"
 	do
-		if [[ $var =~ .*\.tex ]]
+		if [[ "${var}" =~ .*\.tex ]]
 		then
 			IFS='.' read -ra notetozip <<< "$var"
-   		zip -m .${notetozip}.zip ${notetozip}__* ${notetozip}.tex
+   		zip -m ".${notetozip}.zip" "${notetozip}__"* "${notetozip}.tex"
 		fi
 	done
-#		echo "Zipping note..."
 #		echo "Note ${1} zipped"
 }
 
 function noteunzip() {
-				echo "Unzipping note..."
-				unzip .$1.zip && rm .$1.zip
-				echo "Note ${1} unzipped"
+	for var in "$@"
+	do
+		IFS='.' read -ra notetounzip <<< "$var"
+		unzip ".${notetounzip}.zip" && rm ".${notetounzip}.zip"
+		echo "Note ${notetounzip} unzipped."
+	done
 }
 
 function notetree() {
@@ -72,4 +60,17 @@ function noteexists() {
 				fi
 }
 
+function notebooknew() {
+	printf "Choose new notebook parent directory: "
+	new_notebook_directory=$(find $notes_path -type d | fzf)
+	echo $new_notebook_directory
+	printf "Choose new notebook name: "
+	read new_notebook_name
+	mkdir "${new_notebook_directory}/${new_notebook_name}" -p
+	echo "Notebook ${new_notebook_name} created succesfully."
+}
 
+function notebookbrowse() {
+	notebook_directory=$(find $notes_path -type d | fzf)
+	cd "${notebook_directory}"
+}
