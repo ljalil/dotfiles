@@ -90,6 +90,13 @@ snippet fig "Figure environment" b
 \end{figure}
 endsnippet
 
+snippet fig* "Unnumbered figure environment" b
+\begin{figure}[${2:htpb}]
+	\centering
+	\includegraphics{${3:name.ext}}
+\end{figure}
+endsnippet
+
 snippet tbf "Bold font" w
 \textbf{${1:${VISUAL}}} $0
 endsnippet
