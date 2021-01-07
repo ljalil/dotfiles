@@ -1,6 +1,11 @@
 #!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
 
-notes_path="/home/abdeljalil/Documents/Notes/"
+notes_path="/home/abdeljalil/Documents/Notes"
 
 function notenew() {
 	printf "Choose notebook: "
@@ -58,6 +63,29 @@ function noteexists() {
 				else
 								return 0
 				fi
+}
+
+function notesearch() {
+	# Search recursively for a string, pass the output to grep and store each line in array element
+#	IFS=$'\n' files_list=($(pdfgrep "${1}" "${notes_path}" -r | grep -oP "^.${notes_path}([^:]*)"))
+
+	IFS=$'\n' files_list=($(pdfgrep "${1}" "${notes_path}" -r ))
+
+	echo -e "There is a total of ${RED}${#files_list[@]}${NC} matches for ${GREEN}${1}${NC} in the following notes:"
+
+	counter=1
+	for file_match in ${files_list[@]}
+	do
+		[[ $file_match =~ Notes([a-zA-Z\/\ \.]*) ]]
+		echo -e "${RED}${counter}${NC}: ${BASH_REMATCH[1]}"
+		counter=$((counter+1))
+	done
+
+	printf "Choose a matching file to search within: "
+	read matching_file_number 
+	[[ ${files_list[$matching_file_number-1]} =~ (.*\.pdf) ]]
+	# Open file in zathura and search for term
+	zathura "${BASH_REMATCH[1]}" -f "${1}" & disown
 }
 
 function notebooknew() {
