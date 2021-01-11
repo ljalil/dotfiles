@@ -116,12 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f `which powerline-daemon` ]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  . /usr/share/powerline/bash/powerline.sh
-fi
+#if [ -f `which powerline-daemon` ]; then
+#  powerline-daemon -q
+#  POWERLINE_BASH_CONTINUATION=1
+#  POWERLINE_BASH_SELECT=1
+#  . /usr/share/powerline/bash/powerline.sh
+#fi
 
 if [[ $(ps --no-header -p $PPID -o comm) =~ yakuake|konsole ]]; then
         for wid in $(xdotool search --pid $PPID); do
@@ -151,3 +151,4 @@ alias cdnotes='cd $HOME/Documents/Notes'
 alias cddo='cd $HOME/.dotfiles'
 alias cleanlatex='rm *.acr *.aux *.blg *.fls *.glo *.ist *.log *.out *.synctex.gz *.toc *.acn *.alg *.bbl *.fdb_latexmk *.glg *.gls *.lof *.lot'
 alias xclip='xclip -selection c'
+eval "$(starship init bash)"
