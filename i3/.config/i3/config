@@ -9,8 +9,6 @@ for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
 # Setting layout and Alt+Shift to toggle
-exec "setxkbmap -layout fr,ar"
-exec "setxkbmap -option 'grp:alt_shift_toggle'"
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -38,8 +36,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start a terminal (Konsole)
-bindsym $mod+Return exec konsole
+# Start a terminal (Kitty)
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -167,3 +165,12 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# start ranger
+bindsym $mod+Control+f exec "kitty -e ranger"
+bindsym $mod+Control+b exec "firefox"
+bindsym $mod+Control+c exec "speedcrunch"
+
+# make speedcrunch window floating
+for_window [class="SpeedCrunch" instance="speedcrunch"] floating enable
+exec "setxkbmap -option 'grp:alt_shift_toggle' -layout fr,ar"

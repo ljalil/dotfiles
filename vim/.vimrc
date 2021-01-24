@@ -27,8 +27,11 @@ Plug 'hanschen/vim-ipython-cell'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/limelight.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 "┌──────────────────┐
@@ -46,11 +49,11 @@ set hlsearch			"Highlight search
 set incsearch			"Highlight partial search
 set linebreak			"Don't break words when line are too long
 set wildignore=*.acn,*.acr,*.alg,*.aux,*.bbl,*.blg,*.glg,*.glo,*.lot,*.out,*.synctex.gz,*.toc
-colo gruvbox
-set background=dark
+colo nord
+set termguicolors
 hi VertSplit ctermbg=236
 set fillchars+=vert:\ 
-hi NonText ctermfg=bg
+"hi NonText ctermfg=bg
 au BufRead,BufNewFile *.todo set filetype=todo
 
 "┌─────────┐
@@ -64,6 +67,7 @@ let g:airline_right_sep = ''		"  |_ Remove rectangular seperators
 let g:airline_left_alt_sep = ''		"  |
 let g:airline_right_alt_sep = ''	" -|
 let g:airline#extensions#whitespace#enabled = 0 "Don't show white spaces info
+let g:airline_theme='onedark'
 
 "┌──────────┐
 "│ NERDTree │
@@ -108,7 +112,6 @@ let g:vimtex_fold_types = {
 			\},
 			\}
 set nofoldenable		"Disable folding when opening a file
-
 "┌─────────────┐
 "│ Tex-Conceal │
 "└─────────────┘
@@ -146,6 +149,9 @@ nnoremap <leader>b :TagbarToggle<cr>
 "└───────────┘
 let g:limelight_conceal_ctermfg = 8 "DarkGray
 
+
+"fix conceal color for Nord color scheme
+:hi Conceal ctermfg=109 guifg=#8fbcbb ctermbg=NONE guibg=NONE
 "┌───────────┐
 "│ Powerline │
 "└───────────┘
