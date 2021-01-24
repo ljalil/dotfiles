@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
+source ~/.shortcuts.sh
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -145,10 +145,69 @@ unset __conda_setup
 
 source ~/.notes.sh
 
+
+function cleanlatex() {
+if [ -f *.acr ]; then
+    rm *.acr
+fi
+if [ -f *.aux ]; then
+    rm *.aux
+fi
+if [ -f *.blg ]; then
+    rm *.blg
+fi
+if [ -f *.fls ]; then
+    rm *.fls
+fi
+if [ -f *.glo ]; then
+    rm *.glo
+fi
+if [ -f *.ist ]; then
+    rm *.ist
+fi
+if [ -f *.log ]; then
+    rm *.log
+fi
+if [ -f *.out ]; then
+    rm *.out
+fi
+if [ -f *.synctex.gz ]; then
+    rm *.synctex.gz
+fi
+if [ -f *.toc ]; then
+    rm *.toc
+fi
+if [ -f *.acn ]; then
+    rm *.acn
+fi
+if [ -f *.alg ]; then
+    rm *.alg
+fi
+if [ -f *.bbl ]; then
+    rm *.bbl
+fi
+if [ -f *.fdb_latexmk ]; then
+    rm *.fdb_latexmk
+fi
+if [ -f *.glg ]; then
+    rm *.glg
+fi
+if [ -f *.gls ]; then
+    rm *.gls
+fi
+if [ -f *.lof ]; then
+    rm *.lof
+fi
+if [ -f *.lot ]; then
+    rm *.lot
+fi
+}
+
 # Aliases
-alias cdwo='cd $HOME/Workspace'
-alias cdnotes='cd $HOME/Documents/Notes'
-alias cddo='cd $HOME/.dotfiles'
-alias cleanlatex='rm *.acr *.aux *.blg *.fls *.glo *.ist *.log *.out *.synctex.gz *.toc *.acn *.alg *.bbl *.fdb_latexmk *.glg *.gls *.lof *.lot'
 alias xclip='xclip -selection c'
 eval "$(starship init bash)"
+export PATH=$PATH:~/.scripts/
+
+alias editcv='cd ~/Workspace/cv/ && vim cv.tex'
+
+alias genshortcuts='cd ~/.scripts/ && sh ~/.scripts/shortcuts.sh && cd'
