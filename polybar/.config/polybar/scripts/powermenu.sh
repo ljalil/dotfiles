@@ -6,7 +6,7 @@
 ## Twitter : @adi1090x
 
 dir="~/.config/polybar/scripts/rofi"
-uptime=$(uptime -p | sed -e 's/up //g')
+uptime=$(uptime | awk -F'( |,|:)+' '{d=h=m=0; if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes"}')
 
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
