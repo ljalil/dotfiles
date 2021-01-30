@@ -2,20 +2,23 @@ work				~/Workspace
 cv					~/Documents/cv
 letters			~/Documents/Letters
 notes				~/Documents/Notes
+pres				~/Presentations
 dot					~/.dotfiles
 dotbash			~/.dotfiles/bash/
 doti3				~/.dotfiles/i3/.config/i3
 dotkitty		~/.dotfiles/kitty/.config/kitty
+dotranger		~/.dotfiles/ranger/.config/ranger
 dotnotes		~/.dotfiles/notes
 dotpolybar	~/.dotfiles/polybar/.config/polybar
 dotvim			~/.dotfiles/vim	
 dotzathura	~/.dotfiles/zathura/.config/zathura
-scripts			~/.dotfiles/scripts
+dotscripts			~/.dotfiles/scripts/.scripts
 oraculum		~/Workspace/oraculum
 vibspectrum	~/Workspace/vibspectrum
 drive				/media/Drive/
 books				/media/Drive/Books
-booksA			/media/Drive/Books - Academic
+booksme				/media/Drive/Books/Mechanical Engineering
+booksml				/media/Drive/Books/Machine Learning
 movies			/media/Drive/Movies
 series			/media/Drive/Series
-photos			/media/Drive/Photos Backup
+photos			/media/Drive/Photos
