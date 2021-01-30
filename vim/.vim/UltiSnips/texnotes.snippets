@@ -19,3 +19,29 @@ snippet texnote "New LaTeX note" b
 
 \end{document}
 endsnippet
+
+snippet texnotemath "New LaTeX Math note" b
+\documentclass[a4, 12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{transparent}
+
+\setlength{\parskip}{.5em}
+\setlength{\parindent}{0em}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{note}{Note}
+\newtheorem*{conclusion}{Conclusion}
+
+\title{$1}
+\author{Abdeljalil Letrache}
+
+\begin{document}
+\maketitle
+
+	$2
+
+\end{document}
+endsnippet
