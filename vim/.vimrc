@@ -33,13 +33,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
 call plug#end()
-
 "┌──────────────────┐
 "│ General settings │
 "└──────────────────┘
 set encoding=utf-8
 set relativenumber
-inoremap jj <esc>
 set hidden
 filetype plugin on
 let mapleader = " "
@@ -53,8 +51,7 @@ colo nord
 set termguicolors
 hi VertSplit ctermbg=236
 set fillchars+=vert:\ 
-"hi NonText ctermfg=bg
-au BufRead,BufNewFile *.todo set filetype=todo
+hi NonText ctermfg=None
 
 "┌─────────┐
 "│ Airline │
@@ -77,7 +74,7 @@ highlight! link NERDTreeFlags NERDTreeDir "Apply highliting to folders icons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let NERDTreeDirArrowExpandable=""
 let NERDTreeDirArrowCollapsible=""
 let g:NERDTreeMinimalUI = v:true
@@ -96,6 +93,7 @@ let g:UltiSnipsJumpBackwardTrigger	=	"<S-Tab>"
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_view_general_viewer = 'vimtex_viewer_zathura'
+let g:vimtex_quickfix_mode = 0
 let g:vimtex_toc_config = {
 			\'split_pos'   : ':vert :botright',
 			\'split_width':  35,
@@ -123,7 +121,7 @@ let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 "┌───────────┐
 "│ Vim Slime │
 "└───────────┘
-let g:slime_target = "x11"
+let g:slime_target = "kitty"
 let g:slime_paste_file = "$HOME/.slime_paste"
 
 "┌──────────────┐
@@ -142,14 +140,12 @@ nnoremap <leader>b :TagbarToggle<cr>
 "┌─────┐
 "│ FZF │
 "└─────┘
-"let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
 
 "┌───────────┐
 "│ Limelight │
 "└───────────┘
 let g:limelight_conceal_ctermfg = 8 "DarkGray
-
-
 "fix conceal color for Nord color scheme
 :hi Conceal ctermfg=109 guifg=#8fbcbb ctermbg=NONE guibg=NONE
 "┌───────────┐
