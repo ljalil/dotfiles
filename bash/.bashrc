@@ -3,6 +3,7 @@
 # for examples
 source ~/.shortcuts.sh
 source ~/.search_shortcuts.sh
+source ~/.notes.sh
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -144,11 +145,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source ~/.notes.sh
 
+eval "$(starship init bash)"
+export PATH=$PATH:~/.scripts/
 
-function texclean() {
-    texjunk=$(find ./ -type f \( -iname \*.acr \
+alias texclean='find ./ -type f \( -iname \*.acr \
                     -o -iname \*.aux \
                     -o -iname \*.blg \
                     -o -iname \*.fls \
@@ -169,21 +170,15 @@ function texclean() {
                     -o -iname \*.vrb \
                     -o -iname \*.nav \
                     -o -iname \*.snm \
-                    \)
-            )
-    rm $texjunk
-}
-
-# Aliases
+                    \) -print0 \
+                    | xargs -0 rm'
+            
 alias xclip='xclip -selection c'
-eval "$(starship init bash)"
-export PATH=$PATH:~/.scripts/
-
-alias editcv='cd ~/Workspace/cv/ && vim cv.tex'
-
+alias editcv='cd ~/Documents/cv/ && vim cv.tex'
 alias genshortcuts='cd ~/.scripts/ && sh ~/.scripts/shortcuts.sh && cd'
 
 # OpenSUSE-specific
+alias search="zypper se "
 alias install="sudo zypper in "
 alias lupdate="sudo zypper lu"
 alias update="sudo zypper up "
