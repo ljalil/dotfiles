@@ -91,7 +91,7 @@ snippet fig "Figure environment" b
 endsnippet
 
 snippet fig* "Unnumbered figure environment" b
-\begin{figure}[${2:htpb}]
+\begin{figure}[${2:h}]
 	\centering
 	\includegraphics{${3:name.ext}}
 \end{figure}
@@ -159,7 +159,6 @@ snippet sec* "Section"
 ${0}
 endsnippet
 
-
 snippet sub "Subsection"
 \subsection{${1:${VISUAL:subsection name}}}%
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
@@ -212,8 +211,6 @@ snippet acl "Acroynm expanded" b
 $0
 endsnippet
 
-
-
 snippet ni "Non-indented paragraph" b
 \noindent
 $0
@@ -260,4 +257,23 @@ snippet glnl "New long glossary item" b
   ${0:description}
 }
 endsnippet
+
+snippet lstcode "Listigns code" b
+\begin{lstlisting}[language=$1]
+	$2
+\end{lstlisting}
+
+$0
+endsnippet
+
+
+snippet frame "Beamer frame" b
+\begin{frame}
+	\frametitle{${1:frame_title}}
+
+	$0
+
+\end{frame}
+endsnippet
+
 # vim:ft=snippets:

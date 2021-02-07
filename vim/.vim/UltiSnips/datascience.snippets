@@ -1,8 +1,22 @@
 #Libraries
-snippet importscipy "Import SciPy libraries" b
+snippet nlib "Import SciPy libraries" b
+from numpy import *
+
+$0
+endsnippet
+
+snippet nplib "Import SciPy libraries" b
+from numpy import *
+import pandas as pd
+
+$0
+endsnippet
+
+snippet npmlib "Import SciPy libraries" b
 from numpy import *
 import pandas as pd
 import matplotlib.pyplot as plt
+
 $0
 endsnippet
 
@@ -13,10 +27,51 @@ plt.rc('xtick', labelsize='10')
 plt.rc('ytick', labelsize='10')
 plt.rc('axes', titlesize=12)
 plt.rc('text', usetex=True)
+
 $0
 endsnippet
 
 snippet figure "Matplotlib figure" b
 fig, axes = plt.subplots(${1:nrows}, ${2:ncols}, sharex=${3:False}, sharey=${4:False} ,figsize=(${5:width}, ${6:length}))
 $0
+endsnippet
+
+#Pytorch
+
+snippet ptlib "PyTorch Libraries" b
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+from torch.utils.data import TensorDataset, DataLoader
+
+$0
+endsnippet
+
+snippet ptmod "PyTorch Module" b
+class ${1:ModuleName}(nn.Module):
+	def __init__(self):
+		super($1, self).__init__()
+		$2
+
+	def forward(self, x):
+		pass
+endsnippet
+
+snippet pttrain "PyTorch Train Model" b
+
+${1:model_name} = ${2:ModelClass}()
+$1.train()
+
+optimizer = optim.${3:Optimizer}($1.parameters(), lr=${4:learning_rate})
+criterion = nn.${5:Criterion}()
+
+for epoch in range(0, ${6:epochs}):
+	for batch_id, (data, targets) in enumerate(${7:data_loader}):
+		optimizer.zero_grad()
+		output = $1(data)
+		loss = criterion(output, targets)
+		loss.backward()
+		optimizer.step()
+
 endsnippet

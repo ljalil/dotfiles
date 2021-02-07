@@ -45,3 +45,42 @@ snippet texnotemath "New LaTeX Math note" b
 
 \end{document}
 endsnippet
+
+snippet texnotecode "New LaTeX Code note" b
+\documentclass[a4, 12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\setlength{\parskip}{.5em}
+\setlength{\parindent}{0em}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\title{$1}
+\author{Abdeljalil Letrache}
+
+\lstset{
+    breaklines=true,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+		numbers=left,
+    identifierstyle=\color{codegray},
+		tabsize=4,
+		frame=single
+}
+
+\begin{document}
+\maketitle
+
+	$2
+
+\end{document}
+endsnippet
