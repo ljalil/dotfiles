@@ -1,3 +1,5 @@
+set synctex true
+set synctex-editor-command "nvr --remote-silent %f -c %l"
 set default-bg                  "#2E3440"
 set default-fg                  "#3B4252"
 
