@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LEVEL=$(cat /sys/class/power_supply/BAT1/capacity)
+THRESHOLD=20
+
+if [[ $LEVEL -le $THRESHOLD ]]; then
+ notify-send -u critical "Low Battery" "Please plug the charger"
+fi

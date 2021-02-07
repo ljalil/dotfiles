@@ -1,0 +1,35 @@
+#!/bin/bash
+
+IFS=$'\n' USBLIST=($(sudo fdisk -l | awk '/^\/dev\/sd[^a]/ {print $1}'))
+
+if [[ ${#USBLIST[@]} -eq 0 ]]; then
+	echo "There are no USB drives."
+	exit
+fi
+
+if [[ ${#USBLIST[@]} -eq 1 ]]; then
+	echo "There is one USB drive: " ${USBLIST[0]} 
+	printf "Mount it? (y/n): "
+	read MNT_CHOICE
+
+	if [[ MNT_CHOICE -eq 'y' ]]; then
+		printf "Mount in: /media/"
+		read MOUNT_POINT
+	fi
+fi
+
+if [[ ${#USBLIST[@]} -ge 2 ]]; then
+	echo "There are a total of ${#USBLIST[@]} USB drives:"
+
+	CHOICE=1
+
+	for USB in ${USBLIST[@]}
+	do
+		echo $CHOICE ": " $USB
+		CHOICE=$((CHOICE+1))
+	done
+
+	printf "Which USB drive to mount? "
+	read USBCHOICE
+	echo $USBCHOICE
+fi

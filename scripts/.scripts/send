@@ -1,0 +1,6 @@
+#!/bin/bash
+
+file_path="${1}/${2}" 
+
+kdeconnect-cli -d $(kdeconnect-cli -a --id-only) --share "${file_path}"
+
