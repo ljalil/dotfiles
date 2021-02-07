@@ -25,6 +25,10 @@ function nnew() {
 	if [[ "${new_note_type_choice}" == 2 ]]; then
 		new_note_type="texnotemath"
 	fi
+
+	if [[ "${new_note_type_choice}" == 3 ]]; then
+		new_note_type="texnotecode"
+	fi
 	
 #	simplified_new_note_title=${new_note_title,,} #to lowercase
 #	simplified_new_note_title="${simplified_new_note_title// /_}"
