@@ -23,6 +23,7 @@ exec --no-startup-id nm-applet
 
 # Launch polybar
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id sh $HOME/.scripts/kbdlayout.sh
 
 # Draw wallpaper using Nitrogen
 exec --no-startup-id nitrogen --set-zoom-fill ~/Pictures/wallpapers/wallpaper01.jpg
@@ -174,7 +175,9 @@ bindsym $mod+Control+c exec "speedcrunch"
 
 # make speedcrunch window floating
 for_window [class="SpeedCrunch" instance="speedcrunch"] floating enable
-exec "setxkbmap -option 'grp:alt_shift_toggle' -layout fr,ar"
 
 # Multiple screens
 bindsym $mod+o move workspace to output right
+
+# Set keyboard layout
+exec "setxkbmap -option grp:alt_shift_toggle -layout fr,ar"
