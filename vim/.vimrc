@@ -47,7 +47,7 @@ set hlsearch			"Highlight search
 set incsearch			"Highlight partial search
 set linebreak			"Don't break words when line are too long
 set wildignore=*.acn,*.acr,*.alg,*.aux,*.bbl,*.blg,*.glg,*.glo,*.lot,*.out,*.synctex.gz,*.toc
-colo nord
+colo ayu
 set termguicolors
 hi VertSplit ctermbg=236
 set fillchars+=vert:\ 
@@ -64,7 +64,7 @@ let g:airline_right_sep = ''		"  |_ Remove rectangular seperators
 let g:airline_left_alt_sep = ''		"  |
 let g:airline_right_alt_sep = ''	" -|
 let g:airline#extensions#whitespace#enabled = 0 "Don't show white spaces info
-let g:airline_theme='onedark'
+let g:airline_theme='ayu'
 
 "┌──────────┐
 "│ NERDTree │
