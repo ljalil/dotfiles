@@ -2,6 +2,7 @@ priority -50
 
 extends texmath
 extends texnotes
+extends texbeamer
 global !p
 
 def create_table(snip):
@@ -267,13 +268,5 @@ $0
 endsnippet
 
 
-snippet frame "Beamer frame" b
-\begin{frame}
-	\frametitle{${1:frame_title}}
-
-	$0
-
-\end{frame}
-endsnippet
 
 # vim:ft=snippets:

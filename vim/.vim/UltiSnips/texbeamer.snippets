@@ -1,0 +1,22 @@
+snippet presentation "Beamer presentation" b
+\documentclass{beamer}
+\usetheme{Berkeley}
+\title{$1}
+\author{$2}
+
+\begin{document}
+
+	\frame{\titlepage}
+	$0
+
+\end{document}
+endsnippet
+
+snippet frame "Beamer frame" b
+\begin{frame}
+	\frametitle{${1:frame_title}}
+
+	$0
+
+\end{frame}
+endsnippet
