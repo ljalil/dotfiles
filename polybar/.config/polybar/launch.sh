@@ -10,4 +10,4 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
 polybar -r -q main -c "$DIR"/config.ini 2>/home/abdeljalil/polylog &
-polybar -r -q second -c "$DIR"/config.ini 2>/home/abdeljalil/polylog &
+#polybar -r -q second -c "$DIR"/config.ini 2>/home/abdeljalil/polylog &

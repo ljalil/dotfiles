@@ -1,0 +1,25 @@
+#!/bin/bash
+dir="~/.config/polybar/scripts/rofi"
+
+
+powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
+
+if [[ $powered == "no" ]]; then
+	bt_power_on="Power on"
+	bt_close="Close"
+
+	choice=$(echo -e "Power on\nClose" | rofi -dmenu -i -no-fixed-num-lines -theme $dir/networkmenu.rasi -p "Bluetooth")
+	if [[ $choice == $bt_power_on ]];then
+		bluetoothctl power on
+	fi
+	if [[ $choice==$bt_close ]]; then
+		exit
+	fi
+fi
+
+if [[ $powered == "yes" ]]; then
+	choice=$(echo -e "Scan\nPower off\nClose" | rofi -i -dmenu -no-fixed-num-lines -theme $dir/networkmenu.rasi -p "Bluetooth")
+fi
+#echo $powered | rofi -dmenu -theme $dir/networkmenu.rasi -p "Bluetooth" $powered
+#bluetoothctl devices | awk '{print $3}' | rofi -dmenu -theme $dir/networkmenu.rasi -p "Bluetooth"
+
