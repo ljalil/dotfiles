@@ -1,0 +1,4 @@
+#!/bin/bash
+xrandr --output VGA-1 --auto --right-of LVDS-1 --scale 1.3x1.1
+xrandr --output LVDS-1 --mode 1366x768
+nitrogen --restore
