@@ -43,7 +43,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%- # increase screen bright
 floating_modifier $mod
 
 # Start a terminal (Kitty)
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
