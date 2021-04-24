@@ -55,6 +55,10 @@ hi VertSplit ctermbg=236
 set fillchars+=vert:\ 
 highlight EndOfBuffer ctermfg=bg
 hi NonText ctermfg=None
+set list
+set tabstop=4
+set shiftwidth=4
+set listchars=tab:⋅\   
 
 "┌─────────┐
 "│ Airline │
@@ -143,7 +147,8 @@ nnoremap <leader>b :TagbarToggle<cr>
 "┌─────┐
 "│ FZF │
 "└─────┘
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
+nnoremap <leader>f :FZF<cr>
+let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6, 'highlight': 'Comment' } }
 
 "┌───────────┐
 "│ Limelight │
