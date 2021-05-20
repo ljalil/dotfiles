@@ -148,7 +148,7 @@ unset __conda_setup
 
 eval "$(starship init bash)"
 export PATH=$PATH:~/.scripts/
-
+alias brave-cors="brave-browser --disable-web-security  --user-data-dir=~/.braveTemp"
 alias texclean='find ./ -type f \( -iname \*.acr \
                     -o -iname \*.aux \
                     -o -iname \*.blg \
@@ -176,6 +176,8 @@ alias texclean='find ./ -type f \( -iname \*.acr \
 alias xclip='xclip -selection c'
 alias editcv='cd ~/Documents/cv/ && vim cv.tex'
 alias genshortcuts='cd ~/.scripts/ && sh ~/.scripts/shortcuts.sh && cd'
+alias wifi-scan='nmcli device wifi list --rescan yes'
+alias wifi-connect='nmcli device wifi connect '
 
 # OpenSUSE-specific
 alias search="zypper se "
