@@ -1,3 +1,4 @@
+set ft=todo
 "if exists('g:todo_app_loaded')
 "finish
 "endif
@@ -44,3 +45,6 @@ endfunction
 "endfunction
 
 "command Todo :call s:OpenTodo()
+nmap <leader>n :call TodoMarkNew()<cr>
+nmap <leader>p :call TodoMarkProgress()<cr>
+nmap <leader>d :call TodoMarkDone()<cr>

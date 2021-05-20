@@ -59,6 +59,33 @@ set list
 set tabstop=4
 set shiftwidth=4
 set listchars=tab:⋅\   
+au! BufRead,BufNewFile *.todo            setfiletype todo
+"┌─────────┐
+"│ Windows │
+"└─────────┘
+
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <leader>q :q<cr>
+
+"┌──────┐
+"│ Tabs │
+"└──────┘
+nnoremap <leader>ts :tab split<cr>
+nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>to :tabonly<cr>
+
+
+"┌────────────────┐
+"│ Saving/Closing │
+"└────────────────┘
+nnoremap <c-q> :q<cr>
+nnoremap <c-s> :w<cr>
+nnoremap <c-s><c-s> :wall<cr>
 
 "┌─────────┐
 "│ Airline │
@@ -149,6 +176,11 @@ nnoremap <leader>b :TagbarToggle<cr>
 "└─────┘
 nnoremap <leader>f :FZF<cr>
 let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6, 'highlight': 'Comment' } }
+
+"┌──────┐
+"│  Ag  │
+"└──────┘
+nnoremap <leader>a :Ag<cr>
 
 "┌───────────┐
 "│ Limelight │
